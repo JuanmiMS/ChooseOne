@@ -54,3 +54,14 @@
     height: 100px;
     background-color: red;
 }
+
+
+/* upload img style */
+
+.image-upload input{
+    display: none;
+}
+
+.image-upload label {
+    pointer: hand;
+}
