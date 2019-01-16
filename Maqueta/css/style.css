@@ -49,3 +49,8 @@
     height: 35vh;
     z-index: 1;
 } */
+
+.timerContainer {
+    height: 100px;
+    background-color: red;
+}
