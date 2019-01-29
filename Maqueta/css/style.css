@@ -63,5 +63,5 @@
 }
 
 .image-upload label {
-    pointer: hand;
+    cursor: pointer;
 }
