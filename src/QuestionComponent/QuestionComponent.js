@@ -16,7 +16,7 @@ class QuestionComponent extends Component {
 
     handleClick () {
         axios.get('http://172.16.6.41:8080/api')
-          .then(response => console.log(response.data['message']))
+          .then(response => console.log(response.data['message'])).catch(alert("error"))
     }
 
 
