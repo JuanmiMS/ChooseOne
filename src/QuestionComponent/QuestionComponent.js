@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios'
 import OptionImage from '../OptionImage/OptionImage';
 import option1 from '../img/All_Might_sonriendo.png';
 import option2 from '../img/superman-worlds-finest_1.jpg';
@@ -13,11 +14,17 @@ class QuestionComponent extends Component {
         }
     }
 
+    handleClick () {
+        axios.get('http://172.16.6.41:8080/api')
+          .then(response => console.log(response.data['message']))
+    }
+
+
     componentWillMount() {
         this.setState({
             title: this.props.title
         })
-    }
+    }   
 
     render() {
         return (
@@ -29,7 +36,7 @@ class QuestionComponent extends Component {
                     <div id="img1" className="col-5">
                         <OptionImage imageUrl={option1}/>
                     </div>
-                    <div className="col-2 timerContainer mt-5"></div>
+                    <div onClick={this.handleClick} className="col-2 timerContainer mt-5"></div>
                     <div id="img2" className="col-5">
                         <OptionImage imageUrl={option2}/>
                     </div>
