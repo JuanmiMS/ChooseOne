@@ -126,9 +126,9 @@
                     <h2>INSERTA IMAGEN 02</h2>
                 <div class="image-upload">
                     <label for="file-input">
-                        <img src="img/descarga.png"/>
+                        <img height="250" width="250" id="img2" src="img/descarga.png"/>
                     </label>
-                    <input id="file-input" type="file"/>
+                    <input id="file-input" onchange="readURL(this, 'img2');" type="file"/>
                 </div>                
             </div>
         </div>
