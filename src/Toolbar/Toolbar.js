@@ -29,7 +29,7 @@ class Toolbar extends Component {
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container">
 
-                    <a className="navbar-brand" href="#">ChooseOne</a>
+                    <a className="navbar-brand" href="#aqui">ChooseOne</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent"
                             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@ class Toolbar extends Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item active">
-                                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                                <a className="nav-link" href="#aqui">Home <span className="sr-only">(current)</span></a>
                             </li>
                         </ul>
                         <ul className="nav navbar-nav navbar-right">
@@ -75,7 +75,7 @@ class Toolbar extends Component {
                                             </DropdownItem>
                                             <DropdownItem>
                                                 <p className="text-left">
-                                                    <a href="#" className="btn btn-primary btn-block btn-sm">Actualizar
+                                                    <a href="#aqui" className="btn btn-primary btn-block btn-sm">Actualizar
                                                         Datos</a>
                                                 </p>
                                             </DropdownItem>
@@ -86,7 +86,7 @@ class Toolbar extends Component {
                                                         <div className="row">
                                                             <div className="col-12">
                                                                 <p>
-                                                                    <a href="#" className="btn btn-danger btn-block">Cerrar
+                                                                    <a href="#aqui" className="btn btn-danger btn-block">Cerrar
                                                                         Sesion</a>
                                                                 </p>
                                                             </div>

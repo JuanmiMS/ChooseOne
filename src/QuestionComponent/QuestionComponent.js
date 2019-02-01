@@ -15,8 +15,14 @@ class QuestionComponent extends Component {
     }
 
     handleClick () {
-        axios.get('http://172.16.6.41:8080/api')
-          .then(response => console.log(response.data['message'])).catch(alert("error"))
+        axios.get('localhost:8080/api/pregunta/1')
+          .then(response => console.log(response.data['vecesRespondida'])).catch(alert("error"))
+    }
+
+    vecesRespondida () {
+        axios.get('http://localhost:8080/api/pregunta/1')
+          .then(response => function(){return response.data['vecesRespondida']})
+          .catch(console.log("error"))
     }
 
 
@@ -31,6 +37,7 @@ class QuestionComponent extends Component {
             <main className="container">
                 <div id="preguntaContainer" className="alert alert-info col-12 mt-5 text-center">
                     <h2>{this.state.title}</h2>
+                    {/* <h2>{this.vecesRespondida}</h2> */}
                 </div>
                 <div className="row">
                     <div id="img1" className="col-5">
