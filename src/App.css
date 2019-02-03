@@ -30,3 +30,71 @@
     transform: rotate(360deg);
   }
 }
+
+.navbar-login
+{
+  width: 305px;
+  padding: 10px;
+  padding-bottom: 0px;
+}
+
+.navbar-login-session
+{
+  padding: 10px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+.icon-size
+{
+  font-size: 87px;
+}
+
+#img1 > img, #img2 > img {
+  max-width: 100%;
+  border-radius: 10%;
+  height: 35vh;
+}
+#img1:after, #img2:after {
+  content:'\A';
+  position:absolute;
+  width:100%; height:100%;
+  top:0; left:0;
+  background-image: url(./img/thumbs-up-2-512.png);
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  opacity:0;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+#img1:hover:after, #img2:hover:after {
+  opacity: 0.75;
+}
+/*
+.vote { display: none;}
+.vote:hover {
+    display: block;
+    background-image: url(../img/thumbs-up-2-512.png);
+    max-width: 100%;
+    border-radius: 10%;
+    height: 35vh;
+    z-index: 1;
+} */
+
+.timerContainer {
+  height: 100px;
+  background-color: red;
+}
+
+
+/* upload img style */
+
+.image-upload input{
+  display: none;
+}
+
+.image-upload label {
+  pointer: hand;
+}
