@@ -1,12 +1,13 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
+import imgDescarga from '../img/descarga.png';
 
-class LoadQuestion extends Component{
-    constructor(props){
+class LoadQuestion extends Component {
+    constructor(props) {
         super(props);
         this.state = {
-            question:"",
-            img1:<img height="250" width="250" id="img1" src="../img/descarga.png"/>,
-            img2:<img height="250" width="250" id="img2" src="../img/descarga.png"/>
+            question: "",
+            img1: <img height="250" width="250" id="img1" src={imgDescarga}/>,
+            img2: <img height="250" width="250" id="img2"src={imgDescarga}/>
         };
         this.handleInputQuestion = this.handleInputQuestion.bind(this);
         this.readImage = this.readImage.bind(this);
@@ -14,7 +15,7 @@ class LoadQuestion extends Component{
 
     handleInputQuestion(e) {
         this.setState({
-            question:e.target.value
+            question: e.target.value
         })
     }
 
@@ -22,25 +23,18 @@ class LoadQuestion extends Component{
         const that = this;
         if (e.target.files[0]) {
             var reader = new FileReader();
-            const imgNode = e.target.name == "img1" ? this.state.img1: this.state.img2;
             const imgName = e.target.name;
 
             reader.onload = function (e) {
-                if(imgName == "img1") {
-                    that.setState({
-                        img1: <img height="250" width="250" id={imgName} src={e.target.result}/>
-                    })
-                }
-                else {
-                    that.setState({
-                        img2: <img height="250" width="250" id={imgName} src={e.target.result}/>
-                    })
-                }
+                that.setState({
+                    [imgName]: <img height="250" width="250" id={imgName} src={e.target.result}/>
+                })
             };
 
             reader.readAsDataURL(e.target.files[0]);
         }
     }
+
     render() {
         return (
             <main className="container">
@@ -70,7 +64,7 @@ class LoadQuestion extends Component{
                             <label htmlFor="file-input1">
                                 {this.state.img2}
                             </label>
-                            <input id="file-input1" onChange={this.readImage} name={"img2"}   type="file"/>
+                            <input id="file-input1" onChange={this.readImage} name={"img2"} type="file"/>
                         </div>
                     </div>
                 </div>
