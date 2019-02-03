@@ -8,37 +8,65 @@ class QuestionComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            option1: "",
-            option2: "",
-            title: ""
+            enunciado: "",
+            img1: "",
+            img2: "",
+            title: "",
+            respuestas: 0
         }
     }
 
     handleClick () {
-        axios.get('http://172.16.6.41:8080/api')
-          .then(response => console.log(response.data['message'])).catch(alert("error"))
+        axios.get('http://localhost:8080/api/pregunta/1')
+          .then(response => console.log(response.data['img']))
     }
 
+    cargaDatos = () => {
+        axios.get('http://localhost:8080/api/pregunta/1')
+          .then(response => this.setState(
+              {
+                respuestas : response.data['vecesRespondida'],
+                enunciado : response.data['enunciado']},
+                )
+              )
+        
+        axios.get('http://localhost:8080/api/pregunta/1/imgs/img1')
+          .then(response => this.setState(
+              {
+                img1 : response.data['path']
+            }
+                )
+              )
+        axios.get('http://localhost:8080/api/pregunta/1/imgs/img2')
+          .then(response => this.setState(
+              {
+                img2 : response.data['path']
+            }
+                )
+              )
+        
+    }
 
     componentWillMount() {
-        this.setState({
-            title: this.props.title
-        })
+        this.cargaDatos()
     }   
 
     render() {
         return (
             <main className="container">
                 <div id="preguntaContainer" className="alert alert-info col-12 mt-5 text-center">
-                    <h2>{this.state.title}</h2>
+                    <h2>{this.state.enunciado}</h2>
+                    Veces respondida: {this.state.respuestas}
                 </div>
                 <div className="row">
                     <div id="img1" className="col-5">
                         <OptionImage imageUrl={option1}/>
+                        ruta : {this.state.img1}
                     </div>
                     <div onClick={this.handleClick} className="col-2 timerContainer mt-5"></div>
                     <div id="img2" className="col-5">
                         <OptionImage imageUrl={option2}/>
+                        ruta : {this.state.img2}
                     </div>
                 </div>
             </main>

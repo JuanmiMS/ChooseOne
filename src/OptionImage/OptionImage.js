@@ -17,7 +17,7 @@ class OptionImage extends Component {
     }
     render() {
         return(
-            <img src={this.state.imageUrl} />
+            <img alt="" src={this.state.imageUrl} />
         )
     }
 }
