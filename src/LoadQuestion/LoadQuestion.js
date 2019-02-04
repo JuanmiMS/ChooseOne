@@ -8,27 +8,46 @@ class LoadQuestion extends Component {
         this.state = {
             img1: <img height="250" width="250" id="img1" src={imgDescarga}/>,
             img2: <img height="250" width="250" id="img2" src={imgDescarga}/>,
+            defaultImgRoute: "../img/uploadImg.png"
         };
         this.handleInputQuestion = this.handleInputQuestion.bind(this);
         this.readImage = this.readImage.bind(this);
         this.sendQuestion = this.sendQuestion.bind(this);
         this.deleteQuestion = this.deleteQuestion.bind(this);
+        this.inputErrorStyle = this.inputErrorStyle.bind(this);
+        this.cleanInput = this.cleanInput.bind(this);
+        this.checkQuestion = this.checkQuestion.bind(this);
+    }
+
+    inputErrorStyle() {
+        this.input.current.style.borderColor = "red";
+    }
+
+    cleanInput() {
+        this.input.current.value = "";
+        this.input.current.style.borderColor = "";
+    }
+
+    checkQuestion() {
+        var verify = 0;
+        verify = this.state.img1.props.src !== this.state.defaultImgRoute ? verify + 1  : verify;
+        verify = this.state.img2.props.src !== this.state.defaultImgRoute ? verify + 1 : verify;
+        verify = this.input.current.value !== "" ? verify + 1: verify;
+        return verify;
     }
 
     sendQuestion() {
-        let input = this.state.inputQuestion;
-        if (this.input.current.value === "") {
-            alert("Por favor, inserte una pregunta");
-            this.input.current.style.borderColor = "red";
-            this.setState({
-                inputQuestion: input
-            })
-
-        } else {
+        if (this.checkQuestion() === 3) {
             alert("¡Pregunta enviada!");
+            this.cleanInput();
             this.deleteQuestion();
         }
+        else{
+            alert("Porfavor rellena todos los campos");
+        }
+
     };
+
 
     deleteQuestion() {
         const initialState = {
@@ -36,14 +55,11 @@ class LoadQuestion extends Component {
             img1: <img height="250" width="250" id="img1" src={imgDescarga}/>,
             img2: <img height="250" width="250" id="img2" src={imgDescarga}/>,
         };
-        if (window.confirm('¿Deseas borrar la pregunta?')) {
-            this.setState({
-                img1: initialState['img1'],
-                img2: initialState['img2'],
-            });
-            this.input.current.style.borderColor = "";
-            this.input.current.value = "";
-        }
+        this.setState({
+            img1: initialState['img1'],
+            img2: initialState['img2'],
+        });
+        this.cleanInput();
     };
 
 
@@ -76,7 +92,8 @@ class LoadQuestion extends Component {
                     <h2>Inserte una pregunta y dos imágenes como respuestas:</h2>
                     <form>
                         <div className="form-group">
-                            <input ref={this.input}  type="text" placeholder="Inserte pregunta aquí..." className="form-control"
+                            <input ref={this.input} type="text" placeholder="Inserte pregunta aquí..."
+                                   className="form-control"
                                    id="question"/>
                         </div>
                     </form>
