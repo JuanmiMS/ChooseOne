@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Choose One</title>
+    <link rel="icon" href="img/logoChooseOne01.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -20,7 +21,6 @@
             } else {
                 alert("¡Pregunta enviada!")
             }
-        //   document.getElementById("question").value === "" ? alert("Por favor, inserte una pregunta") : alert("¡Pregunta enviada!");
         };
 
         function deleteQuestion() {
@@ -53,7 +53,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
 
-            <a class="navbar-brand" href="#">ChooseOne</a>
+            <a class="navbar-brand" href="#">ChooseOne <img height="45" width="45" id="logo" src="img/logoChooseOne01.png"/></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -120,7 +120,7 @@
           </nav>
         </div>
     </header>
-    <main class="container alert alert-info">
+    <main class="container alert alert-info mt-5">
         <div id="preguntaContainer" class="col-12 mt-5 text-center">
             <h2>Inserte una pregunta y dos imágenes como respuestas:</h2>
             <form>

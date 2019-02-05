@@ -1,3 +1,6 @@
+body{
+    background-image: url("../img/wallpaper.jpg");
+}
 .navbar-login
 {
     width: 305px;
