@@ -4,6 +4,17 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
+import firebase from 'firebase';
+
+firebase.initializeApp({
+    apiKey: "AIzaSyAofQ-s3wfaf7avPgT4tE1JlqbXMg5q97U",
+    authDomain: "chooseone-60d71.firebaseapp.com",
+    databaseURL: "https://chooseone-60d71.firebaseio.com",
+    projectId: "chooseone-60d71",
+    storageBucket: "chooseone-60d71.appspot.com",
+    messagingSenderId: "302774920695"
+
+});
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

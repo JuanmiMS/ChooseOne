@@ -1,0 +1,23 @@
+.Modal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
+}
+.modal-content{
+    box-shadow: inset 0px 0px 15px white;
+    border-radius: 20px;
+    background-color: rgba(24, 27, 29, 0.95);
+    color: #56cfff;
+}
+.modal-body{
+    display: flex;
+    justify-content: center;
+}
+.modal-header{
+    display: flex;
+    justify-content: center;
+}
+.btns-container > Button{
+    margin: 5px;
+}
