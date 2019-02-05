@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Choose One</title>
+    <link rel="icon" href="img/logoChooseOne01.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -12,8 +13,25 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script>
-        function myFunction() {
-          document.getElementById("question").value === "" ? alert("inserte una pregunta") : alert("¡MARCHANDO UN BOCATA DE CHORISO!");
+        function sendQuestion() {
+            let question = document.getElementById("question");
+            if (question.value === ""){
+                alert("Por favor, inserte una pregunta");
+                question.style.borderColor = "red";
+            } else {
+                alert("¡Pregunta enviada!")
+            }
+        };
+
+        function deleteQuestion() {
+            let question = document.getElementById("question");
+            let img1 = document.getElementById("img1");
+            let img2 = document.getElementById("img2");
+            if (confirm('¿Deseas borrar la pregunta?')) {
+                question.value = "";
+                img1.src = "img/uploadImg.png";
+                img2.src = "img/uploadImg.png";
+            }    
         };
 
         function readURL(input, img) {
@@ -35,7 +53,8 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
 
-            <a class="navbar-brand" href="Index.html">ChooseOne</a>
+            <a class="navbar-brand" href="#">ChooseOne <img height="45" width="45" id="logo" src="img/logoChooseOne01.png"/></a>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -102,33 +121,37 @@
           </nav>
         </div>
     </header>
-    <main class="container">
-        <div id="preguntaContainer" class="alert alert-info col-12 mt-5 text-center">
-            <h2>Choose One</h2>
+    <main class="container alert alert-info mt-5">
+        <div id="preguntaContainer" class="col-12 mt-5 text-center">
+            <h2>Inserte una pregunta y dos imágenes como respuestas:</h2>
             <form>
                 <div class="form-group">
                     <input type="text" placeholder="Inserte pregunta aquí..." class="form-control" id="question">
                 </div>
             </form>
         </div>
-        <div class="row col-12">
-            <div class="col-5 text-center">
-                <h2>INSERTA IMAGEN 01</h2>
+        <div class="row">
+            <div class="col-sm text-center">
                 <div class="image-upload">
                     <label for="file-input">
-                        <img height="250" width="250" id="img1" src="img/descarga.png"/>
+                        <img height="250" width="250" id="img1" src="img/uploadImg.png"/>
+
                     </label>
                     <input id="file-input" onchange="readURL(this, 'img1');" type="file"/>
-                </div>                
+                </div>
             </div>
-            <button type="button" class="btn btn-success col-2" onclick="myFunction()">Success</button>
-            <div class="col-5 text-center">
-                    <h2>INSERTA IMAGEN 02</h2>
+            <div class="col-sm text-center">
+                <button type="button" class="btn btn-primary btn-lg mt-5" onclick="sendQuestion()">Enviar pregunta</button>
+                <button type="button" class="btn btn-danger btn-lg mt-5" onclick="deleteQuestion()">Borrar pregunta</button>
+            </div>
+            
+            <!-- <button type="button" class="btn btn-success col-2" onclick="myFunction()">Success</button> -->
+            <div class="col-sm text-center">
                 <div class="image-upload">
-                    <label for="file-input">
-                        <img height="250" width="250" id="img2" src="img/descarga.png"/>
+                    <label for="file-input1">
+                        <img height="250" width="250" id="img2" src="img/uploadImg.png"/>
                     </label>
-                    <input id="file-input" onchange="readURL(this, 'img2');" type="file"/>
+                    <input id="file-input1" onchange="readURL(this, 'img2');" type="file"/>
                 </div>                
             </div>
         </div>
