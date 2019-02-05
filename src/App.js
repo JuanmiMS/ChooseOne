@@ -3,6 +3,7 @@ import './App.css';
 import Toolbar from './Toolbar/Toolbar';
 import QuestionComponent from './QuestionComponent/QuestionComponent';
 import LoadQuestion from './LoadQuestion/LoadQuestion';
+import AuthLayout from './Auth/Auth';
 
 class App extends Component {
     render() {
@@ -10,7 +11,8 @@ class App extends Component {
             <div className="App">
                 <Toolbar/>
                {/* <QuestionComponent title={"Cuál es tu super héroe Favorito"}/>*/}
-                <LoadQuestion/>
+                {/*<LoadQuestion/>*/}
+                <AuthLayout/>
             </div>
         );
     }

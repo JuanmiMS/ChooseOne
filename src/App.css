@@ -30,7 +30,9 @@
     transform: rotate(360deg);
   }
 }
-
+.nav{
+  justify-content: center;
+}
 .navbar-login
 {
   width: 305px;
@@ -98,3 +100,4 @@
 .image-upload label {
   pointer: hand;
 }
+
