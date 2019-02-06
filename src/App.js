@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Switch, Route } from 'react-router-dom'
 import './App.css';
 import Toolbar from './Toolbar/Toolbar';
 import QuestionComponent from './QuestionComponent/QuestionComponent';
@@ -9,8 +10,11 @@ class App extends Component {
         return (
             <div className="App">
                 <Toolbar/>
-               <QuestionComponent title={"Cuál es tu super héroe Favorito"}/>
-                {/* <LoadQuestion/> */}
+
+                <Switch>
+                    <Route exact path="/" component={QuestionComponent} />
+                    <Route exact path='/loadquestion' component={LoadQuestion} />
+                </Switch>
             </div>
         );
     }

@@ -6,8 +6,8 @@ class LoadQuestion extends Component {
         super(props);
         this.input = React.createRef();
         this.state = {
-            img1: <img height="250" width="250" id="img1" src={imgDescarga}/>,
-            img2: <img height="250" width="250" id="img2" src={imgDescarga}/>,
+            img1: <img alt="" height="250" width="250" id="img1" src={imgDescarga}/>,
+            img2: <img  alt="" height="250" width="250" id="img2" src={imgDescarga}/>,
             defaultImgRoute: "../img/uploadImg.png"
         };
         this.handleInputQuestion = this.handleInputQuestion.bind(this);
@@ -52,8 +52,8 @@ class LoadQuestion extends Component {
     deleteQuestion() {
         const initialState = {
             question: "",
-            img1: <img height="250" width="250" id="img1" src={imgDescarga}/>,
-            img2: <img height="250" width="250" id="img2" src={imgDescarga}/>,
+            img1: <img  alt="" height="250" width="250" id="img1" src={imgDescarga}/>,
+            img2: <img  alt="" height="250" width="250" id="img2" src={imgDescarga}/>,
         };
         this.setState({
             img1: initialState['img1'],
@@ -77,7 +77,7 @@ class LoadQuestion extends Component {
 
             reader.onload = function (e) {
                 that.setState({
-                    [imgName]: <img height="250" width="250" id={imgName} src={e.target.result}/>
+                    [imgName]: <img  alt="" height="250" width="250" id={imgName} src={e.target.result}/>
                 })
             };
 

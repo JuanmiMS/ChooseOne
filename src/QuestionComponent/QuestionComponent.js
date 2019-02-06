@@ -46,6 +46,9 @@ class QuestionComponent extends Component {
               )
         
     }
+    imgRespondida(){
+        alert("Respuesta seleccionada!")
+    }
 
     componentWillMount() {
         this.cargaDatos()
@@ -59,12 +62,12 @@ class QuestionComponent extends Component {
                     Veces respondida: {this.state.respuestas}
                 </div>
                 <div className="row">
-                    <div id="img1" className="col-5">
+                    <div id="img1" onClick={this.imgRespondida} className="col-5">
                         <OptionImage imageUrl={option1}/>
                         ruta : {this.state.img1}
                     </div>
                     <div onClick={this.handleClick} className="col-2 timerContainer mt-5"></div>
-                    <div id="img2" className="col-5">
+                    <div id="img2" onClick={this.imgRespondida} className="col-5">
                         <OptionImage imageUrl={option2}/>
                         ruta : {this.state.img2}
                     </div>
