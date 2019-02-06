@@ -11,7 +11,6 @@ class App extends Component {
         return (
             <div className="App">
                 <Toolbar/>
-
                 <Switch>
                     <Route exact path="/" component={QuestionComponent} />
                     <Route exact path='/loadquestion' component={LoadQuestion} />
