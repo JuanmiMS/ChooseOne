@@ -4,6 +4,7 @@ import './App.css';
 import Toolbar from './Toolbar/Toolbar';
 import QuestionComponent from './QuestionComponent/QuestionComponent';
 import LoadQuestion from './LoadQuestion/LoadQuestion';
+import AuthLayout from './Auth/Auth';
 
 class App extends Component {
     render() {
@@ -15,6 +16,7 @@ class App extends Component {
                     <Route exact path="/" component={QuestionComponent} />
                     <Route exact path='/loadquestion' component={LoadQuestion} />
                 </Switch>
+                <AuthLayout/>
             </div>
         );
     }
