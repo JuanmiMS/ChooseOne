@@ -88,13 +88,10 @@ class ToolbarAuth extends Component {
                 <div id={'preLogin'}>
                     <Nav>
                         <NavItem>
-                            <Button color="primary" provider={"Google"} onClick={this.handleAuth}> Login con
-                                Google </Button>
-                        </NavItem>
-                        <NavItem>
                             <CustomModal handleAuthUser={this.handleAuthUser} saveUser={this.handleAuthWithEmail}
                                          color="success"
-                                         buttonLabel={"sign in / sign up"}/>
+                                         buttonLabel={"sign in / sign up"} loginWithGoogle={<Button color="success" provider={"Google"} onClick={this.handleAuth}> Login con
+                                Google </Button>}/>
                         </NavItem>
                     </Nav>
                 </div>

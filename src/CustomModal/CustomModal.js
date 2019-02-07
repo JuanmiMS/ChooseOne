@@ -69,7 +69,8 @@ class CustomModal extends React.Component {
                     <ModalFooter>
                         {/*{this.loginButton()}*/}
                         <div className={"btns-container"}>
-                            <Button color="primary" onClick={this.handleLoginUser}>Iniciar Sesión</Button>
+                            <Button color="success" onClick={this.handleLoginUser}>Iniciar Sesión</Button>
+                            {this.props.loginWithGoogle}
                             <Button color="primary" onClick={this.handleRegisterUser}>Registrarse</Button>
                         </div>
                         <Button color="danger" onClick={this.toggle}>Cancel</Button>
