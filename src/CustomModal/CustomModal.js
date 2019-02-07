@@ -30,7 +30,7 @@ class CustomModal extends React.Component {
         this.props.handleAuthUser(this.state.username, this.state.password);
     }
 
-    loginButton() {
+   /* loginButton() {
         if (this.state.password) {
             return (
                 <div className={"btns-container"}>
@@ -40,7 +40,7 @@ class CustomModal extends React.Component {
             )
 
         }
-    }
+    }*/
 
     render() {
         return (
@@ -51,7 +51,7 @@ class CustomModal extends React.Component {
                     <ModalBody>
                         <InputGroup>
                             <InputGroupAddon addonType="prepend">@</InputGroupAddon>
-                            <Input placeholder="username" onKeyDown={e => {
+                            <Input placeholder="username" onBlur={e => {
                                 this.setState({
                                     username: e.target.value
                                 })
@@ -59,7 +59,7 @@ class CustomModal extends React.Component {
                         </InputGroup>
                         <InputGroup>
                             <InputGroupAddon addonType="prepend">🔐</InputGroupAddon>
-                            <Input placeholder="password" type={'password'} onKeyDown={e => {
+                            <Input placeholder="password" type={'password'} onBlur={e => {
                                 this.setState({
                                     password: e.target.value
                                 })
@@ -67,7 +67,11 @@ class CustomModal extends React.Component {
                         </InputGroup>
                     </ModalBody>
                     <ModalFooter>
-                        {this.loginButton()}
+                        {/*{this.loginButton()}*/}
+                        <div className={"btns-container"}>
+                            <Button color="primary" onClick={this.handleLoginUser}>Iniciar Sesión</Button>
+                            <Button color="primary" onClick={this.handleRegisterUser}>Registrarse</Button>
+                        </div>
                         <Button color="danger" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
