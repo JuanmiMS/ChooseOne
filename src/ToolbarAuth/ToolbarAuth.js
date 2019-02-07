@@ -1,25 +1,41 @@
-import React,{Component} from 'react';
-import {Button, Nav, NavItem} from 'reactstrap';
+import React, {Component} from 'react';
+import {
+    Button,
+    Collapse,
+    DropdownItem,
+    DropdownMenu,
+    DropdownToggle,
+    Nav,
+    NavItem,
+    UncontrolledDropdown
+} from 'reactstrap';
 import CustomModal from '../CustomModal/CustomModal.js';
-import CustomHeader from '../customHeader/customHeader';
 import firebase from 'firebase';
 import axios from 'axios'
 import notUserImg from '../img/notUserImg.png';
 
 
-class Auth extends  Component{
+class ToolbarAuth extends Component {
     constructor() {
         super();
         this.state = {
             user: null,
-            photoUrl: ""
+            photoUrl: "",
+            isOpen: false
         };
+        this.toggle = this.toggle.bind(this);
         this.renderSignInLayout = this.renderSignInLayout.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
         this.addImageToState = this.addImageToState.bind(this);
         this.handleUserImg = this.handleUserImg.bind(this);
         this.saveToken = this.saveToken.bind(this);
         this.handleAuth = this.handleAuth.bind(this);
+    }
+
+    toggle() {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
     }
 
     componentWillMount() {
@@ -103,15 +119,28 @@ class Auth extends  Component{
 
     render() {
         return (
-            <div className="App">
-                <CustomHeader title={"Prueba de autentificación"}
-                              description={"Vamos a ver si esta ñapa funciona"}
-                />
-                <div>
-                    {this.renderSignInLayout()}
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <div className="container">
+
+                    <a className="navbar-brand" href="#aqui">ChooseOne</a>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav mr-auto">
+                            <li className="nav-item active">
+                                <a className="nav-link" href="#aqui">Home <span className="sr-only">(current)</span></a>
+                            </li>
+                        </ul>
+                        {this.renderSignInLayout()}
+                    </div>
                 </div>
-            </div>
+            </nav>
         );
     }
 }
-export default Auth;
+
+export default ToolbarAuth;
