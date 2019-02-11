@@ -9,6 +9,8 @@ class OptionImage extends Component {
         }
     }
 
+    
+
     componentWillMount() {
         this.setState({
             imageUrl: this.props.imageUrl,

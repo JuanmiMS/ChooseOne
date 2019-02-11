@@ -30,18 +30,6 @@ class CustomModal extends React.Component {
         this.props.handleAuthUser(this.state.username, this.state.password);
     }
 
-   /* loginButton() {
-        if (this.state.password) {
-            return (
-                <div className={"btns-container"}>
-                    <Button color="primary" onClick={this.handleLoginUser}>Iniciar Sesión</Button>
-                    <Button color="primary" onClick={this.handleRegisterUser}>Registrarse</Button>
-                </div>
-            )
-
-        }
-    }*/
-
     render() {
         return (
             <div style={{display:'inline-block'}}>
@@ -58,7 +46,7 @@ class CustomModal extends React.Component {
                             }}/>
                         </InputGroup>
                         <InputGroup>
-                            <InputGroupAddon addonType="prepend">🔐</InputGroupAddon>
+                            <InputGroupAddon addonType="prepend"><span>🔐</span></InputGroupAddon>
                             <Input placeholder="password" type={'password'} onBlur={e => {
                                 this.setState({
                                     password: e.target.value

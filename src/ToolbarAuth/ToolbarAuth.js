@@ -1,18 +1,15 @@
 import React, {Component} from 'react';
 import {
     Button,
-    Collapse,
-    DropdownItem,
-    DropdownMenu,
-    DropdownToggle,
     Nav,
     NavItem,
-    UncontrolledDropdown
 } from 'reactstrap';
 import CustomModal from '../CustomModal/CustomModal.js';
 import firebase from 'firebase';
 import axios from 'axios'
 import notUserImg from '../img/notUserImg.png';
+import { Link } from 'react-router-dom'
+
 
 
 class ToolbarAuth extends Component {
@@ -23,13 +20,6 @@ class ToolbarAuth extends Component {
             photoUrl: "",
             isOpen: false
         };
-        this.toggle = this.toggle.bind(this);
-        this.renderSignInLayout = this.renderSignInLayout.bind(this);
-        this.handleLogout = this.handleLogout.bind(this);
-        this.addImageToState = this.addImageToState.bind(this);
-        this.handleUserImg = this.handleUserImg.bind(this);
-        this.saveToken = this.saveToken.bind(this);
-        this.handleAuth = this.handleAuth.bind(this);
     }
 
     toggle() {
@@ -44,7 +34,7 @@ class ToolbarAuth extends Component {
         });
     }
 
-    handleAuth(e) {
+    handleAuth = e => {
         const that = this;
         const provider = e.target.getAttribute('Provider') === "Google" ?
             new firebase.auth.GoogleAuthProvider() : new firebase.auth.EmailAuthProvider();
@@ -53,25 +43,25 @@ class ToolbarAuth extends Component {
             .catch(error => console.log(`Error: ${error.code}: ${error.message}`))
     }
 
-    saveToken(token) {
+    saveToken = token => {
         localStorage.setItem('token', token); //saving token in localStorage of browser
         axios.post('http://localhost:8080/api/auth', {data: token})
             .then(response => console.log(response)); //pass the token to the server
     }
 
-    handleAuthWithEmail(email, password) {
+    handleAuthWithEmail = (email, password) => {
         new firebase.auth().createUserWithEmailAndPassword(email, password)
             .catch(error => alert(error))
     }
 
-    handleUserImg() {
+    handleUserImg = () => {
         let urlPhoto = this.state.user.photoURL !== null ? this.state.user.photoURL : notUserImg;
         return (
             <img src={urlPhoto} alt={this.state.user.displayName}/>
         )
     }
 
-    renderSignInLayout() {
+    renderSignInLayout =() => {
         if (this.state.user) {
             return (
                 <div id='contents'>
@@ -99,16 +89,16 @@ class ToolbarAuth extends Component {
         }
     }
 
-    handleLogout() {
+    handleLogout = _ => {
         firebase.auth().signOut();
     }
 
-    handleAuthUser(email, password) {
+    handleAuthUser = (email, password) => {
         new firebase.auth().signInWithEmailAndPassword(email, password)
             .catch(error => alert(error))
     }
 
-    addImageToState(url) {
+    addImageToState = (url) => {
         this.setState({
             photoUrl: url
         })
@@ -127,9 +117,14 @@ class ToolbarAuth extends Component {
                     </button>
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav mr-auto">
+                            <li className="nav-item active">
+                                <Link to={'/'}>Home</Link>
+                            </li>
+                        </ul>
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item active">
-                                <a className="nav-link" href="#aqui">Home <span className="sr-only">(current)</span></a>
+                                <Link to={'/loadquestion'}>Load Question</Link>
                             </li>
                         </ul>
                         {this.renderSignInLayout()}
