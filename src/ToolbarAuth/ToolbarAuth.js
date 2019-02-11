@@ -1,19 +1,31 @@
-import React,{Component} from 'react';
-import {Button, Nav, NavItem} from 'reactstrap';
+import React, {Component} from 'react';
+import {
+    Button,
+    Nav,
+    NavItem,
+} from 'reactstrap';
 import CustomModal from '../CustomModal/CustomModal.js';
-import CustomHeader from '../customHeader/customHeader';
 import firebase from 'firebase';
 import axios from 'axios'
 import notUserImg from '../img/notUserImg.png';
+import { Link } from 'react-router-dom'
 
 
-class Auth extends  Component{
+
+class ToolbarAuth extends Component {
     constructor() {
         super();
         this.state = {
             user: null,
-            photoUrl: ""
+            photoUrl: "",
+            isOpen: false
         };
+    }
+
+    toggle() {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
     }
 
     componentWillMount() {
@@ -66,13 +78,10 @@ class Auth extends  Component{
                 <div id={'preLogin'}>
                     <Nav>
                         <NavItem>
-                            <Button color="primary" provider={"Google"} onClick={this.handleAuth}> Login con
-                                Google </Button>
-                        </NavItem>
-                        <NavItem>
                             <CustomModal handleAuthUser={this.handleAuthUser} saveUser={this.handleAuthWithEmail}
                                          color="success"
-                                         buttonLabel={"sign in / sign up"}/>
+                                         buttonLabel={"sign in / sign up"} loginWithGoogle={<Button color="success" provider={"Google"} onClick={this.handleAuth}> Login con
+                                Google </Button>}/>
                         </NavItem>
                     </Nav>
                 </div>
@@ -97,15 +106,33 @@ class Auth extends  Component{
 
     render() {
         return (
-            <div className="App">
-                <CustomHeader title={"Prueba de autentificación"}
-                              description={"Vamos a ver si esta ñapa funciona"}
-                />
-                <div>
-                    {this.renderSignInLayout()}
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <div className="container">
+
+                    <a className="navbar-brand" href="#aqui">ChooseOne</a>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav mr-auto">
+                            <li className="nav-item active">
+                                <Link to={'/'}>Home</Link>
+                            </li>
+                        </ul>
+                        <ul className="navbar-nav mr-auto">
+                            <li className="nav-item active">
+                                <Link to={'/loadquestion'}>Load Question</Link>
+                            </li>
+                        </ul>
+                        {this.renderSignInLayout()}
+                    </div>
                 </div>
-            </div>
+            </nav>
         );
     }
 }
-export default Auth;
+
+export default ToolbarAuth;
