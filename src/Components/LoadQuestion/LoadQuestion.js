@@ -36,26 +36,26 @@ class LoadQuestion extends Component {
         // if (this.checkQuestion() === 3) {
         if (true) {
             
-            let pregunta = {
-                id : "amano",
-                pregunta : {
-                    imgs: [
+            let dummyQuestion = {
+                "id" : "amano",
+                "pregunta" : {
+                    "imgs": [
                         {
-                            alt: "alt",
-                            path: "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F921319.jpg?alt=media&token=76c8a41f-ed00-4ccf-a61f-10c380f474b4"
+                            "alt": "alt",
+                            "path": "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F921319.jpg?alt=media&token=76c8a41f-ed00-4ccf-a61f-10c380f474b4"
                         },
                         {
-                            alt: "alt2",
-                            path: "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F542652.jpg?alt=media&token=c21f7849-3128-42d7-b7dd-802fe9158d5a"
+                            "alt": "alt2",
+                            "path": "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F542652.jpg?alt=media&token=c21f7849-3128-42d7-b7dd-802fe9158d5a"
                         }
                     ],
-                    vecesRespondida: 99,
-                    enunciado: "Esto es una prueba",
-                    autor: "Juanan"
+                    "vecesRespondida": 99,
+                    "enunciado": "Esto es una prueba",
+                    "autor": "Juanan"
                 }
               };
 
-              axios.post(`http://localhost:8080/api/pregunta`, { pregunta })
+              axios.post(`http://localhost:8080/api/pregunta`, { dummyQuestion })
               .then(res => {
                 console.log(res);
                 console.log(res.data);
