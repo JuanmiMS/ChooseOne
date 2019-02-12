@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
-import imgDescarga from '../img/uploadImg.png';
+import imgDescarga from '../../img/uploadImg.png';
+import axios from 'axios'
+
+
 
 class LoadQuestion extends Component {
     constructor(props) {
@@ -10,25 +13,18 @@ class LoadQuestion extends Component {
             img2: <img  alt="" height="250" width="250" id="img2" src={imgDescarga}/>,
             defaultImgRoute: "../img/uploadImg.png"
         };
-        this.handleInputQuestion = this.handleInputQuestion.bind(this);
-        this.readImage = this.readImage.bind(this);
-        this.sendQuestion = this.sendQuestion.bind(this);
-        this.deleteQuestion = this.deleteQuestion.bind(this);
-        this.inputErrorStyle = this.inputErrorStyle.bind(this);
-        this.cleanInput = this.cleanInput.bind(this);
-        this.checkQuestion = this.checkQuestion.bind(this);
     }
 
-    inputErrorStyle() {
+    inputErrorStyle = () => {
         this.input.current.style.borderColor = "red";
     }
 
-    cleanInput() {
+    cleanInput= () => {
         this.input.current.value = "";
         this.input.current.style.borderColor = "";
     }
 
-    checkQuestion() {
+    checkQuestion= () => {
         var verify = 0;
         verify = this.state.img1.props.src !== this.state.defaultImgRoute ? verify + 1  : verify;
         verify = this.state.img2.props.src !== this.state.defaultImgRoute ? verify + 1 : verify;
@@ -36,11 +32,42 @@ class LoadQuestion extends Component {
         return verify;
     }
 
-    sendQuestion() {
-        if (this.checkQuestion() === 3) {
-            alert("¡Pregunta enviada!");
-            this.cleanInput();
-            this.deleteQuestion();
+    sendQuestion= () => {
+        // if (this.checkQuestion() === 3) {
+        if (true) {
+            
+            let pregunta = {
+                id : "amano",
+                pregunta : {
+                    imgs: [
+                        {
+                            alt: "alt",
+                            path: "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F921319.jpg?alt=media&token=76c8a41f-ed00-4ccf-a61f-10c380f474b4"
+                        },
+                        {
+                            alt: "alt2",
+                            path: "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F542652.jpg?alt=media&token=c21f7849-3128-42d7-b7dd-802fe9158d5a"
+                        }
+                    ],
+                    vecesRespondida: 99,
+                    enunciado: "Esto es una prueba",
+                    autor: "Juanan"
+                }
+              };
+
+              axios.post(`http://localhost:8080/api/pregunta`, { pregunta })
+              .then(res => {
+                console.log(res);
+                console.log(res.data);
+                alert("¡Pregunta enviada!");
+                this.cleanInput();
+                this.deleteQuestion();
+              })
+            
+            
+            
+
+
         }
         else{
             alert("Porfavor rellena todos los campos");
@@ -49,7 +76,7 @@ class LoadQuestion extends Component {
     };
 
 
-    deleteQuestion() {
+    deleteQuestion= () => {
         const initialState = {
             question: "",
             img1: <img  alt="" height="250" width="250" id="img1" src={imgDescarga}/>,
@@ -63,13 +90,13 @@ class LoadQuestion extends Component {
     };
 
 
-    handleInputQuestion(e) {
+    handleInputQuestion = e => {
         this.setState({
             question: e.target.value
         });
     }
 
-    readImage(e) {
+    readImage = e => {
         const that = this;
         if (e.target.files[0]) {
             var reader = new FileReader();

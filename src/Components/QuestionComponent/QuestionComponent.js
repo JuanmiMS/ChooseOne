@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import OptionImage from '../OptionImage/OptionImage';
-import option1 from '../img/All_Might_sonriendo.png';
-import option2 from '../img/superman-worlds-finest_1.jpg';
 
 class QuestionComponent extends Component {
     constructor(props) {
@@ -55,6 +53,7 @@ class QuestionComponent extends Component {
     }   
 
     render() {
+        console.log(this.state.img1)
         return (
             <main className="container">
                 <div id="preguntaContainer" className="alert alert-info col-12 mt-5 text-center">
@@ -63,12 +62,12 @@ class QuestionComponent extends Component {
                 </div>
                 <div className="row">
                     <div id="img1" onClick={this.imgRespondida} className="col-5">
-                        <OptionImage imageUrl={option1}/>
+                        <OptionImage imageUrl={"https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F921319.jpg?alt=media&token=76c8a41f-ed00-4ccf-a61f-10c380f474b4"}/>
                         ruta : {this.state.img1}
                     </div>
                     <div onClick={this.handleClick} className="col-2 timerContainer mt-5"></div>
                     <div id="img2" onClick={this.imgRespondida} className="col-5">
-                        <OptionImage imageUrl={option2}/>
+                        <OptionImage imageUrl={"https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F542652.jpg?alt=media&token=c21f7849-3128-42d7-b7dd-802fe9158d5a"}/>
                         ruta : {this.state.img2}
                     </div>
                 </div>

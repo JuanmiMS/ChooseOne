@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import { Switch, Route } from 'react-router-dom'
 import './App.css';
-import QuestionComponent from './QuestionComponent/QuestionComponent';
-import LoadQuestion from './LoadQuestion/LoadQuestion';
-import AuthLayout from './ToolbarAuth/ToolbarAuth';
+import QuestionComponent from './Components/QuestionComponent/QuestionComponent';
+import LoadQuestion from './Components/LoadQuestion/LoadQuestion';
+import AuthLayout from './Components/ToolbarAuth/ToolbarAuth';
 
 class App extends Component {
     render() {

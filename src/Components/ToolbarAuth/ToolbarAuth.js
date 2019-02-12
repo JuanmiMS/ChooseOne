@@ -7,12 +7,15 @@ import {
 import CustomModal from '../CustomModal/CustomModal.js';
 import firebase from 'firebase';
 import axios from 'axios'
-import notUserImg from '../img/notUserImg.png';
+import notUserImg from '../../img/notUserImg.png'
 import { Link } from 'react-router-dom'
 
 
 
 class ToolbarAuth extends Component {
+
+
+
     constructor() {
         super();
         this.state = {
@@ -75,6 +78,7 @@ class ToolbarAuth extends Component {
         }
         else {
             return (
+                
                 <div id={'preLogin'}>
                     <Nav>
                         <NavItem>
