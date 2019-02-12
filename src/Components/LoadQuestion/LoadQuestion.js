@@ -79,7 +79,7 @@ class LoadQuestion extends Component {
     };
 
 
-    deleteQuestion= () => {
+    resertQuestion= () => {
         const initialState = {
             question: "",
             img1: <img  alt="" height="250" width="250" id="img1" src={imgDescarga}/>,
@@ -117,7 +117,7 @@ class LoadQuestion extends Component {
 
     render() {
         return (
-            <main className="container alert alert-info">
+            <main className="container loadQuestMain mt-5 alert alert-info">
                 <div id="preguntaContainer" className="col-12 mt-5 text-center">
                     <h2>Inserte una pregunta y dos imágenes como respuestas:</h2>
                     <form>
@@ -140,9 +140,6 @@ class LoadQuestion extends Component {
                     <div className="col-sm text-center">
                         <button type="button" className="btn btn-primary btn-lg mt-5" onClick={this.sendQuestion}>Enviar
                             pregunta
-                        </button>
-                        <button type="button" className="btn btn-danger btn-lg mt-5"
-                                onClick={this.deleteQuestion}>Borrar pregunta
                         </button>
                     </div>
 
