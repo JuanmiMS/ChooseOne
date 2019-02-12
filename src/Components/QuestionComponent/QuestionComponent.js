@@ -19,8 +19,12 @@ class QuestionComponent extends Component {
           .then(response => console.log(response.data['img']))
     }
 
-    cargaDatos = () => {        
-        axios.get('http://localhost:8080/api/pregunta/amano')
+    cargaDatos = () => {
+        
+        var x = Math.floor((Math.random() * 100) + 1);
+        let url = 'http://localhost:8080/api/pregunta/notocar'+x
+
+        axios.get(url)
           .then(response => {
             console.log("DATOS CARGADOS", response.data);
               this.setState({
@@ -42,7 +46,6 @@ class QuestionComponent extends Component {
     }   
 
     render() {
-        console.log(this.state.img1)
         return (
             <main className="container">
                 <div id="preguntaContainer" className="alert alert-info col-12 mt-5 text-center">
@@ -55,7 +58,7 @@ class QuestionComponent extends Component {
                     </div>
                     <div onClick={this.handleClick} className="col-2 timerContainer mt-5"></div>
                     <div id="img2" onClick={this.imgRespondida} className="col-5">
-                        <img src={this.state.img2} alt="img1" />              
+                        <img src={this.state.img2} alt="img2" />              
                     </div>
                 </div>
             </main>
