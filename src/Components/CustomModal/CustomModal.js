@@ -46,7 +46,7 @@ class CustomModal extends React.Component {
                             }}/>
                         </InputGroup>
                         <InputGroup>
-                            <InputGroupAddon addonType="prepend"><span>🔐</span></InputGroupAddon>
+                            <InputGroupAddon addonType="prepend">🔐</InputGroupAddon>
                             <Input placeholder="password" type={'password'} onBlur={e => {
                                 this.setState({
                                     password: e.target.value
