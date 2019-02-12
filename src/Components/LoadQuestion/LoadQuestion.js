@@ -36,7 +36,7 @@ class LoadQuestion extends Component {
         // if (this.checkQuestion() === 3) {
         if (true) {
             
-            let dummyQuestion = {
+            const model = {
                 "id" : "amano",
                 "pregunta" : {
                     "imgs": [
@@ -55,14 +55,17 @@ class LoadQuestion extends Component {
                 }
               };
 
-              axios.post(`http://localhost:8080/api/pregunta`, { dummyQuestion })
+              axios.post(`http://localhost:8080/api/pregunta`, { model })
               .then(res => {
-                console.log(res);
-                console.log(res.data);
+                // console.log(res);
+                // console.log(res.data);
                 alert("¡Pregunta enviada!");
                 this.cleanInput();
                 this.deleteQuestion();
-              })
+              }).catch( res => {
+                  console.log("error enviando la pregunta");
+              }
+              )
             
             
             
