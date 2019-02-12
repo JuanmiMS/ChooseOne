@@ -6,11 +6,11 @@ class QuestionComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            autor:"",
             enunciado: "",
             img1: "",
             img2: "",
-            title: "",
-            respuestas: 0
+            vecesRespondida: 0
         }
     }
 
@@ -19,33 +19,22 @@ class QuestionComponent extends Component {
           .then(response => console.log(response.data['img']))
     }
 
-    cargaDatos = () => {
-        axios.get('http://localhost:8080/api/pregunta/1')
-          .then(response => this.setState(
-              {
-                respuestas : response.data['vecesRespondida'],
-                enunciado : response.data['enunciado']},
-                )
+    cargaDatos = () => {        
+        axios.get('http://localhost:8080/api/pregunta/amano')
+          .then(response => {
+            console.log("DATOS CARGADOS", response.data);
+              this.setState({
+                autor: response.data.autor,
+                enunciado: response.data.enunciado,
+                img1: response.data.imgs[0].path,
+                img2: response.data.imgs[1].path,
+                vecesRespondida : response.data.vecesRespondida
+              })
+          }
               )
-        
-        axios.get('http://localhost:8080/api/pregunta/1/imgs/img1')
-          .then(response => this.setState(
-              {
-                img1 : response.data['path']
-            }
-                )
-              )
-        axios.get('http://localhost:8080/api/pregunta/1/imgs/img2')
-          .then(response => this.setState(
-              {
-                img2 : response.data['path']
-            }
-                )
-              )
-        
     }
     imgRespondida(){
-        alert("Respuesta seleccionada!")
+        // alert("Respuesta seleccionada!")
     }
 
     componentWillMount() {
@@ -58,17 +47,15 @@ class QuestionComponent extends Component {
             <main className="container">
                 <div id="preguntaContainer" className="alert alert-info col-12 mt-5 text-center">
                     <h2>{this.state.enunciado}</h2>
-                    Veces respondida: {this.state.respuestas}
+                    Veces respondida: {this.state.vecesRespondida}
                 </div>
                 <div className="row">
                     <div id="img1" onClick={this.imgRespondida} className="col-5">
-                        <OptionImage imageUrl={"https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F921319.jpg?alt=media&token=76c8a41f-ed00-4ccf-a61f-10c380f474b4"}/>
-                        ruta : {this.state.img1}
+                        <img src={this.state.img1} alt="img1" />              
                     </div>
                     <div onClick={this.handleClick} className="col-2 timerContainer mt-5"></div>
                     <div id="img2" onClick={this.imgRespondida} className="col-5">
-                        <OptionImage imageUrl={"https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F542652.jpg?alt=media&token=c21f7849-3128-42d7-b7dd-802fe9158d5a"}/>
-                        ruta : {this.state.img2}
+                        <img src={this.state.img2} alt="img1" />              
                     </div>
                 </div>
             </main>
