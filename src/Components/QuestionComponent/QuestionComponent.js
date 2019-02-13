@@ -22,11 +22,12 @@ class QuestionComponent extends Component {
 
     cargaDatos = () => {
         
-        var x = Math.floor((Math.random() * 100) + 1);
+        var x = Math.floor((Math.random() * 9) + 1);
         let url = 'http://localhost:8080/api/pregunta/notocar'+x
 
         axios.get(url)
           .then(response => {
+              console.log(url, response)
               this.setState({
                 autor: response.data.autor,
                 enunciado: response.data.enunciado,
@@ -79,12 +80,6 @@ class QuestionComponent extends Component {
             document.getElementById("pregunta").style.display = "block";
         }
     }
-
-    componentDidMount(){
-       
-    }
-    
-
 
     componentWillMount() {
         this.cargaDatos()

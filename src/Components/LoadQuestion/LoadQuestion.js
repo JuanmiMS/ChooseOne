@@ -34,10 +34,11 @@ class LoadQuestion extends Component {
 
     addQuestions = _ => {
 
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 10; i++) {
             const model = {
                 "id" : "notocar"+i,
                 "pregunta" : {
+                    "id" : "notocar"+i,
                     "imgs": [
                         {
                             "alt": "alt",
