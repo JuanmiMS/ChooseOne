@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import imgDescarga from '../../img/uploadImg.png';
+import SendQueModal from '../SendQuestionModal/SendQuestionModal';
+import { Container, Row, Col, Alert } from 'react-bootstrap';
 import axios from 'axios'
 
 
@@ -117,42 +119,51 @@ class LoadQuestion extends Component {
 
     render() {
         return (
-            <main className="container loadQuestMain mt-5 alert alert-info">
-                <div id="preguntaContainer" className="col-12 mt-5 text-center">
-                    <h2>Inserte una pregunta y dos imágenes como respuestas:</h2>
-                    <form>
-                        <div className="form-group">
-                            <input ref={this.input} type="text" placeholder="Inserte pregunta aquí..."
-                                   className="form-control"
-                                   id="question"/>
+        <Container>
+            <Row>
+                <Col>
+                        <div id="preguntaContainer" className="col-12 mt-5 text-center">
+                            <Alert variant="light"> 
+                                <h2>Inserte una pregunta y dos imágenes como respuestas:</h2>
+                            </Alert>
+                            <form>
+                                <div className="form-group">
+                                    <input ref={this.input} type="text" placeholder="Inserte pregunta aquí..."
+                                        className="form-control"
+                                            id="question"/>
+                                </div>
+                            </form>
                         </div>
-                    </form>
-                </div>
-                <div className="row">
-                    <div className="col-sm text-center">
-                        <div className="image-upload">
-                            <label htmlFor="file-input">
-                                {this.state.img1}
-                            </label>
-                            <input id="file-input" onChange={this.readImage} name={"img1"} type="file"/>
-                        </div>
+                    
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <div className="image-upload">
+                         <label htmlFor="file-input">
+                                    {this.state.img1}
+                         </label>
+                        <input id="file-input" onChange={this.readImage} name={"img1"} type="file"/>
                     </div>
-                    <div className="col-sm text-center">
-                        <button type="button" className="btn btn-primary btn-lg mt-5" onClick={this.sendQuestion}>Enviar
-                            pregunta
-                        </button>
-                    </div>
+                </Col>
 
-                    <div className="col-sm text-center">
-                        <div className="image-upload">
-                            <label htmlFor="file-input1">
-                                {this.state.img2}
-                            </label>
-                            <input id="file-input1" onChange={this.readImage} name={"img2"} type="file"/>
-                        </div>
+                <Col>
+                    <SendQueModal></SendQueModal>
+                    {/* <Button variant="primary" size="lg" onClick={this.sendQuestion}>
+                        Enviar pregunta
+                    </Button> */}
+                </Col>
+
+                <Col>
+                    <div className="image-upload">
+                        <label htmlFor="file-input1">
+                            {this.state.img2}
+                        </label>
+                        <input id="file-input1" onChange={this.readImage} name={"img2"} type="file"/>
                     </div>
-                </div>
-            </main>
+                </Col>
+            </Row>
+        </Container>
         )
     }
 
