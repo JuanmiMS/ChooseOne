@@ -34,18 +34,21 @@ class LoadQuestion extends Component {
 
     addQuestions = _ => {
 
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 10; i++) {
             const model = {
                 "id" : "notocar"+i,
                 "pregunta" : {
+                    "id" : "notocar"+i,
                     "imgs": [
                         {
                             "alt": "alt",
-                            "path": "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F921319.jpg?alt=media&token=76c8a41f-ed00-4ccf-a61f-10c380f474b4"
+                            "path": "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F921319.jpg?alt=media&token=76c8a41f-ed00-4ccf-a61f-10c380f474b4",
+                            "votos" : 0,
                         },
                         {
                             "alt": "alt2",
-                            "path": "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F542652.jpg?alt=media&token=c21f7849-3128-42d7-b7dd-802fe9158d5a"
+                            "path": "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F542652.jpg?alt=media&token=c21f7849-3128-42d7-b7dd-802fe9158d5a",
+                            "votos" : 0,
                         }
                     ],
                     "vecesRespondida": 0,
@@ -70,18 +73,20 @@ class LoadQuestion extends Component {
     sendQuestion= () => {
         // if (this.checkQuestion() === 3) {
         if (true) {
-            
+
             const model = {
                 "id" : "notocar",
                 "pregunta" : {
                     "imgs": [
                         {
                             "alt": "alt",
-                            "path": "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F921319.jpg?alt=media&token=76c8a41f-ed00-4ccf-a61f-10c380f474b4"
+                            "path": "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F921319.jpg?alt=media&token=76c8a41f-ed00-4ccf-a61f-10c380f474b4",
+                            "votos" : 0,
                         },
                         {
                             "alt": "alt2",
-                            "path": "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F542652.jpg?alt=media&token=c21f7849-3128-42d7-b7dd-802fe9158d5a"
+                            "path": "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F542652.jpg?alt=media&token=c21f7849-3128-42d7-b7dd-802fe9158d5a",
+                            "votos" : 0,
                         }
                     ],
                     "vecesRespondida": 0,
