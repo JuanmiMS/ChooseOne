@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import axios from 'axios'
+import axios from 'axios';
 import OptionImage from '../OptionImage/OptionImage';
+import ReactTransitionGroup from 'react-addons-transition-group'
+import $ from 'jquery';
 
 class QuestionComponent extends Component {
     constructor(props) {
@@ -22,7 +24,7 @@ class QuestionComponent extends Component {
 
     cargaDatos = () => {
         
-        var x = Math.floor((Math.random() * 100) + 1);
+        var x = Math.floor((Math.random() *  9) + 1);
         let url = 'http://localhost:8080/api/pregunta/notocar'+x
 
         axios.get(url)
@@ -40,8 +42,10 @@ class QuestionComponent extends Component {
     }
     imgRespondida(respuesta){
 
-        console.log("Pregunta",respuesta,"respondida");
-        
+        //TODO Andres: meter efectos de animación
+        //$('#'+respuesta).
+
+
         this.fakeCharge();
         this.cargaDatos();
     }
@@ -100,7 +104,7 @@ class QuestionComponent extends Component {
                         Veces respondida: {this.state.vecesRespondida}
                     </div>
                     <div className="row">
-                        <div id="img1" onClick={(e) => this.imgRespondida("img1")} className="col-5">
+                        <div data-test="tada" id="img1" className="col-5">
                             <img onLoad={(e) => this.cargaImgs("img1")} src={this.state.img1} alt="img1" />              
                         </div>
 
