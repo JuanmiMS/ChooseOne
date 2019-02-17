@@ -122,18 +122,18 @@ class LoadQuestion extends Component {
         <Container>
             <Row>
                 <Col>
-                        <div id="preguntaContainer" className="col-12 mt-5 text-center">
-                            <Alert variant="light"> 
-                                <h2>Inserte una pregunta y dos imágenes como respuestas:</h2>
-                            </Alert>
-                            <form>
-                                <div className="form-group">
-                                    <input ref={this.input} type="text" placeholder="Inserte pregunta aquí..."
-                                        className="form-control"
-                                            id="question"/>
-                                </div>
-                            </form>
-                        </div>
+                    <div id="preguntaContainer" className="col-12 mt-5 text-center">
+                        <Alert variant="light"> 
+                            <h2>Inserte una pregunta y dos imágenes como respuestas:</h2>
+                        </Alert>
+                        <form>
+                            <div className="form-group">
+                                <input ref={this.input} type="text" placeholder="Inserte pregunta aquí..."
+                                    className="form-control"
+                                        id="question"/>
+                            </div>
+                        </form>
+                    </div>
                     
                 </Col>
             </Row>
