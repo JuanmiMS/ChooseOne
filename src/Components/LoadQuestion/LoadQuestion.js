@@ -34,24 +34,64 @@ class LoadQuestion extends Component {
         return verify;
     }
 
+    addQuestions = _ => {
+
+        for (let i = 0; i < 10; i++) {
+            const model = {
+                "id" : "notocar"+i,
+                "pregunta" : {
+                    "id" : "notocar"+i,
+                    "imgs": [
+                        {
+                            "alt": "alt",
+                            "path": "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F921319.jpg?alt=media&token=76c8a41f-ed00-4ccf-a61f-10c380f474b4",
+                            "votos" : 0,
+                        },
+                        {
+                            "alt": "alt2",
+                            "path": "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F542652.jpg?alt=media&token=c21f7849-3128-42d7-b7dd-802fe9158d5a",
+                            "votos" : 0,
+                        }
+                    ],
+                    "vecesRespondida": 0,
+                    "enunciado": "Esto es la prueba num "+i,
+                    "autor": "RandomQuest"
+                }
+              };
+    
+              axios.post(`http://localhost:8080/api/pregunta`, { model })
+              .then(res => {
+                  
+              }).catch( res => {
+                  console.log("error enviando la pregunta");
+              }
+              )
+
+        }
+        alert("intenta no cagarla la próxima vez");
+        
+    }
+
     sendQuestion= () => {
         // if (this.checkQuestion() === 3) {
         if (true) {
-            
+
             const model = {
-                "id" : "amano",
+                "id" : "notocar",
                 "pregunta" : {
                     "imgs": [
                         {
                             "alt": "alt",
-                            "path": "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F921319.jpg?alt=media&token=76c8a41f-ed00-4ccf-a61f-10c380f474b4"
+                            "path": "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F921319.jpg?alt=media&token=76c8a41f-ed00-4ccf-a61f-10c380f474b4",
+                            "votos" : 0,
                         },
                         {
                             "alt": "alt2",
-                            "path": "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F542652.jpg?alt=media&token=c21f7849-3128-42d7-b7dd-802fe9158d5a"
+                            "path": "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F542652.jpg?alt=media&token=c21f7849-3128-42d7-b7dd-802fe9158d5a",
+                            "votos" : 0,
                         }
                     ],
-                    "vecesRespondida": 99,
+                    "vecesRespondida": 0,
                     "enunciado": "Esto es una prueba",
                     "autor": "Juanan"
                 }
@@ -134,6 +174,7 @@ class LoadQuestion extends Component {
                             </div>
                         </form>
                     </div>
+{/* <<<<<<< HEAD
                     
                 </Col>
             </Row>
@@ -143,7 +184,18 @@ class LoadQuestion extends Component {
                          <label htmlFor="file-input">
                                     {this.state.img1}
                          </label>
-                        <input id="file-input" onChange={this.readImage} name={"img1"} type="file"/>
+                        <input id="file-input" onChange={this.readImage} name={"img1"} type="file"/> */}
+
+                    <div className="col-sm text-center">
+                        <button type="button" className="btn btn-primary btn-lg mt-5" onClick={this.sendQuestion}>Enviar
+                            pregunta
+                        </button>
+                        <button type="button" className="btn btn-danger btn-lg mt-5"
+                                onClick={this.deleteQuestion}>Borrar pregunta
+                        </button>
+                        <button type="button" className="btn btn-danger btn-lg mt-5"
+                                onClick={this.addQuestions}>Agregar/Resetear 100 preguntas
+                        </button>
                     </div>
                 </Col>
 
