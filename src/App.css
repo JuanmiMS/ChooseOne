@@ -30,6 +30,11 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-image: url(./img/wallpaper.jpg)
+}
+
 .nav{
   justify-content: center;
 }
