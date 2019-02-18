@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import firebase from 'firebase';
+import { PieChart } from 'react-easy-chart';
 
 
 class QuestionComponent extends Component {
@@ -63,18 +64,32 @@ class QuestionComponent extends Component {
             )
     }
 
+    showTotalAnswers = _ => {
+
+        setTimeout(function () {
+            document.getElementById("carga").style.display = "none";
+            document.getElementById("pregunta").style.display = "none";
+            document.getElementById("respuestas").style.display = "block";
+        }, 3000);
+
+
+
+    }
+
     imgRespondida(respuesta) {
 
         // this.getRandomQuestion();
         this.logAnswer(respuesta);
         this.updateQuestion(respuesta);
+
+        this.showTotalAnswers();
+
         this.fakeCharge();
         this.cargaDatos();
     }
 
     logAnswer = resp => {
 
-        console.log("-------------------------------");
         let today = new Date();
         let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
         let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -83,7 +98,7 @@ class QuestionComponent extends Component {
             "id": today.getTime(),
             "idPregunta": this.state.id,
             "idUsuario": firebase.auth().O,
-            "completeName" : firebase.auth().currentUser.displayName,
+            "completeName": firebase.auth().currentUser.displayName,
             "respuesta": resp,
             "fecha": dateTime
 
@@ -132,13 +147,15 @@ class QuestionComponent extends Component {
 
     fakeCharge = _ => {
 
-        document.getElementById("carga").style.display = "block";
+        document.getElementById("carga").style.display = "none";
         document.getElementById("pregunta").style.display = "none";
+        document.getElementById("respuestas").style.display = "block";
 
         setTimeout(function () {
             document.getElementById("carga").style.display = "none";
             document.getElementById("pregunta").style.display = "block";
-        }, 1000);
+            document.getElementById("respuestas").style.display = "none";
+        }, 3000);
 
     }
 
@@ -179,16 +196,31 @@ class QuestionComponent extends Component {
                     <div className="row">
                         <div id="img1" onClick={(e) => this.imgRespondida("img1")} className="col-5">
                             <img onLoad={(e) => this.cargaImgs("img1")} src={this.state.imgs.path1} alt="img1" />
-                            <span>Veces respondida: {this.state.imgs.votos1}.</span>
+
                         </div>
 
                         <div onClick={this.handleClick} className="col-2 timerContainer mt-5"></div>
 
                         <div id="img2" onClick={(e) => this.imgRespondida("img2")} className="col-5">
                             <img onLoad={(e) => this.cargaImgs("img2")} src={this.state.imgs.path2} alt="img2" />
-                            <span>Veces respondida: {this.state.imgs.votos2}.</span>
                         </div>
                     </div>
+                </div>
+                <div id="respuestas" style={{ display: "none" }}>
+                    <span>IMG1: {this.state.imgs.votos1} vs. IMG2: {this.state.imgs.votos2}</span>
+                    <PieChart
+                        labels
+                        data={[
+                            { key: 'Opción B', value: this.state.imgs.votos2 },
+                            { key: 'Opción A', value: this.state.imgs.votos1 }
+                        ]}
+                        styles={{
+                            '.chart_text': {
+                                fontSize: '1em',
+                                fill: '#fff'
+                            }
+                        }}
+                    />
                 </div>
             </main>
         )
