@@ -91,14 +91,12 @@ class LoadQuestion extends Component {
                     ],
                     "vecesRespondida": 0,
                     "enunciado": "Esto es una prueba",
-                    "autor": "Juanan"
+                    "autor": localStorage.getItem('token')
                 }
               };
 
               axios.post(`http://localhost:8080/api/pregunta`, { model })
               .then(res => {
-                // console.log(res);
-                // console.log(res.data);
                 alert("¡Pregunta enviada!");
                 this.cleanInput();
                 this.deleteQuestion();
