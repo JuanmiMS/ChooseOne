@@ -79,13 +79,21 @@ class QuestionComponent extends Component {
     imgRespondida(respuesta) {
 
         // this.getRandomQuestion();
-        this.logAnswer(respuesta);
-        this.updateQuestion(respuesta);
+        if(firebase.auth().currentUser !== null){
+            this.logAnswer(respuesta)
+            this.updateQuestion(respuesta);
 
-        this.showTotalAnswers();
+            this.showTotalAnswers();
 
-        this.fakeCharge();
-        this.cargaDatos();
+            this.fakeCharge();
+            this.cargaDatos();
+        }
+
+        else{
+            alert("necesitas estar logueado para responder")
+        }
+
+        
     }
 
     logAnswer = resp => {
@@ -94,6 +102,8 @@ class QuestionComponent extends Component {
         let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
         let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
         let dateTime = date + ' ' + time;
+
+
         const model = {
             "id": today.getTime(),
             "idPregunta": this.state.id,
