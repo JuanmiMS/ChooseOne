@@ -9,19 +9,21 @@ export default class Example extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-
     this.state = {
       show: false,
     };
   }
 
-  handleClose() {
+  enviarPregunta = _ => {
+    this.setState({ show: false });
+    alert("pregunta enviada");
+  }
+
+  handleClose = _ => {
     this.setState({ show: false });
   }
 
-  handleShow() {
+  handleShow = _ => {
     this.setState({ show: true });
   }
 
@@ -41,7 +43,7 @@ export default class Example extends React.Component {
             <Button variant="secondary" onClick={this.handleClose}>
               Cancelar
             </Button>
-            <Button variant="primary" onClick={this.handleClose}>
+            <Button variant="primary" onClick={this.enviarPregunta}>
               ¡Vamos allá!
             </Button>
           </Modal.Footer>

@@ -173,9 +173,7 @@ class LoadQuestion extends Component {
                                         id="question"/>
                             </div>
                         </form>
-                    </div>
-{/* <<<<<<< HEAD
-                    
+                    </div>     
                 </Col>
             </Row>
             <Row>
@@ -184,26 +182,16 @@ class LoadQuestion extends Component {
                          <label htmlFor="file-input">
                                     {this.state.img1}
                          </label>
-                        <input id="file-input" onChange={this.readImage} name={"img1"} type="file"/> */}
+                        <input id="file-input" onChange={this.readImage} name={"img1"} type="file"/>
 
-                    <div className="col-sm text-center">
-                        <button type="button" className="btn btn-primary btn-lg mt-5" onClick={this.sendQuestion}>Enviar
-                            pregunta
-                        </button>
-                        <button type="button" className="btn btn-danger btn-lg mt-5"
-                                onClick={this.deleteQuestion}>Borrar pregunta
-                        </button>
-                        <button type="button" className="btn btn-danger btn-lg mt-5"
-                                onClick={this.addQuestions}>Agregar/Resetear 100 preguntas
-                        </button>
+                    
                     </div>
                 </Col>
-
                 <Col>
-                    <SendQueModal></SendQueModal>
-                    {/* <Button variant="primary" size="lg" onClick={this.sendQuestion}>
-                        Enviar pregunta
-                    </Button> */}
+                    <div className="col-sm text-center">
+                    <SendQueModal />
+                    </div>
+                    
                 </Col>
 
                 <Col>
@@ -213,6 +201,10 @@ class LoadQuestion extends Component {
                         </label>
                         <input id="file-input1" onChange={this.readImage} name={"img2"} type="file"/>
                     </div>
+                    <button type="button" className="btn btn-danger btn-lg mt-5"
+                                onClick={this.addQuestions}>
+                                Agregar/Resetear 10 preguntas
+                        </button>
                 </Col>
             </Row>
         </Container>
