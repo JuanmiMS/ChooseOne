@@ -1,19 +1,28 @@
 import React, {Component} from 'react';
 import imgDescarga from '../../img/uploadImg.png';
 import SendQueModal from '../SendQuestionModal/SendQuestionModal';
-import { Container, Row, Col, Alert } from 'react-bootstrap';
+import { Container, Row, Col, Alert,Modal, Button  } from 'react-bootstrap';
 import axios from 'axios'
 
 
+const fontStyle = {
+    color: 'black'
+  };
 
 class LoadQuestion extends Component {
     constructor(props) {
         super(props);
         this.input = React.createRef();
         this.state = {
+            show: false,
             img1: <img alt="" height="250" width="250" id="img1" src={imgDescarga}/>,
             img2: <img  alt="" height="250" width="250" id="img2" src={imgDescarga}/>,
-            defaultImgRoute: "../img/uploadImg.png"
+            title: "",
+            defaultImgRoute: "../img/uploadImg.png",
+            imgModuls:[],
+            question: {
+
+            }
         };
     }
 
@@ -141,6 +150,7 @@ class LoadQuestion extends Component {
 
     readImage = e => {
         const that = this;
+        const copyState = [...this.state.imgModuls];
         if (e.target.files[0]) {
             var reader = new FileReader();
             const imgName = e.target.name;
@@ -152,8 +162,56 @@ class LoadQuestion extends Component {
             };
 
             reader.readAsDataURL(e.target.files[0]);
+            copyState.push(e.target.files[0]);
+            this.setState({
+                imgModuls:copyState
+            })
+        }
+        if(copyState.length == 2 ){
+            that.saveImage(copyState);
         }
     }
+
+    saveImage = (copyState) => {
+        const pathOfImages = [];
+        let image1 = copyState[0];
+        let image2 = copyState[1];
+        axios.post(`http://localhost:8080/api/imagen`, { image1 })
+        .then(res => {
+        pathOfImages.push(res.path)
+        console.log(res);
+        }).catch(res => {
+            console.log(res);
+        })
+
+
+        axios.post(`http://localhost:8080/api/imagen`, { image2 })
+        .then(res => {
+        pathOfImages.push(res.path)
+        console.log(res);
+        }).catch(res => {
+            console.log(res);
+        })
+        console.log(pathOfImages);
+    }
+
+    enviarPregunta = _ => {
+        const image = this.props.firstImage;
+        axios.post(`http://localhost:8080/api/imagen`, { image })
+          .then(res => {
+            console.log(res);
+          }).catch(res => {
+            console.log(res);
+          })
+      }
+    
+      handleClose = _ => {
+        this.setState({ show: false });
+      }
+    
+      handleShow = _ => {
+        this.setState({ show: true });
+      }
 
     render() {
         return (
@@ -166,7 +224,7 @@ class LoadQuestion extends Component {
                         </Alert>
                         <form>
                             <div className="form-group">
-                                <input ref={this.input} type="text" placeholder="Inserte pregunta aquí..."
+                                <input ref={this.input} onBlur={(e) => this.setState({title:e.target.value})} type="text" placeholder="Inserte pregunta aquí..."
                                     className="form-control"
                                         id="question"/>
                             </div>
@@ -187,7 +245,24 @@ class LoadQuestion extends Component {
                 </Col>
                 <Col>
                     <div className="col-sm text-center">
-                    <SendQueModal />
+                    <Button variant="primary" onClick={this.handleShow}>
+                        Enviar pregunta
+                    </Button>
+
+                    <Modal show={this.state.show} onHide={this.handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title style={fontStyle}>ALERTA</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body style={fontStyle}>¿Estás seguro de enviar la siguiente pregunta?</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={this.handleClose}>
+                        Cancelar
+                        </Button>
+                        <Button variant="primary" onClick={this.enviarPregunta}>
+                        ¡Vamos allá!
+                        </Button>
+                    </Modal.Footer>
+                    </Modal>
                     </div>
                     
                 </Col>
@@ -202,7 +277,7 @@ class LoadQuestion extends Component {
                     <button type="button" className="btn btn-danger btn-lg mt-5"
                                 onClick={this.addQuestions}>
                                 Agregar/Resetear 10 preguntas
-                        </button>
+                    </button>
                 </Col>
             </Row>
         </Container>
