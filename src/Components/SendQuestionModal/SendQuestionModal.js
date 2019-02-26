@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import axios from 'axios';
 
 const fontStyle = {
   color: 'black'
@@ -11,12 +12,26 @@ export default class Example extends React.Component {
 
     this.state = {
       show: false,
+      firstImage: "",
+      secondImage: "",
+      title: ""
     };
+  }
+  componentWillReceiveProps(nextProps) {
+    console.log(this.props.firstImage);
+    console.log(this.props.secondImage);
+    console.log(this.props.title);
+
   }
 
   enviarPregunta = _ => {
-    this.setState({ show: false });
-    alert("pregunta enviada");
+    const image = this.props.firstImage;
+    axios.post(`http://localhost:8080/api/imagen`, { image })
+      .then(res => {
+        console.log(res);
+      }).catch(res => {
+        console.log(res);
+      })
   }
 
   handleClose = _ => {
