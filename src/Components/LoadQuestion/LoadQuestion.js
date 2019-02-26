@@ -47,43 +47,6 @@ class LoadQuestion extends Component {
         return verify;
     }
 
-    addQuestions = _ => {
-
-        for (let i = 0; i < 1; i++) {
-            const model = {
-                "id" : "notocar"+i,
-                "pregunta" : {
-                    "id" : "notocar"+i,
-                    "imgs": [
-                        {
-                            "alt": "alt",
-                            "path": "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F921319.jpg?alt=media&token=76c8a41f-ed00-4ccf-a61f-10c380f474b4",
-                            "votos" : 0,
-                        },
-                        {
-                            "alt": "alt2",
-                            "path": "https://firebasestorage.googleapis.com/v0/b/chooseone-60d71.appspot.com/o/fotos%2F542652.jpg?alt=media&token=c21f7849-3128-42d7-b7dd-802fe9158d5a",
-                            "votos" : 0,
-                        }
-                    ],
-                    "vecesRespondida": 0,
-                    "enunciado": "Esto es la prueba num "+i,
-                    "autor": "RandomQuest"
-                }
-              };
-            console.log(model);
-              axios.post(`http://localhost:8080/api/pregunta`, { model })
-              .then(res => {
-                  console.log(res)
-              }).catch( res => {
-                  console.log("error enviando la pregunta");
-              }
-              )
-
-        }
-        alert("intenta no cagarla la próxima vez");
-        
-    }
 
     resertQuestion= () => {
         const initialState = {
@@ -160,7 +123,7 @@ class LoadQuestion extends Component {
     buildQuestionRequest = () => {
         if(this.checkQuestion) {
             let Id = UUID.v4();
-            const request = {
+            const model = {
                 "id" : Id,
                     "pregunta" : {
                     "id" : Id,
@@ -181,8 +144,7 @@ class LoadQuestion extends Component {
                     "autor": localStorage.getItem('token')
                 }
             }
-            console.log(request);
-            axios.post(`http://localhost:8080/api/pregunta`, { request })
+            axios.post(`http://localhost:8080/api/pregunta`, { model })
                 .then(res => {
                     console.log("pregunta subida con éxito");
                 }).catch( res => {
@@ -260,10 +222,6 @@ class LoadQuestion extends Component {
                         </label>
                         <input id="file-input1" onChange={this.readImage} name={"img2"} type="file"/>
                     </div>
-                    <button type="button" className="btn btn-danger btn-lg mt-5"
-                                onClick={this.addQuestions}>
-                                Agregar/Resetear 10 preguntas
-                    </button>
                 </Col>
             </Row>
         </Container>
