@@ -118,7 +118,7 @@ class QuestionComponent extends Component {
         console.log("respuesta añadida");
       })
       .catch(res => {
-        console.log("error actualizando la respeusta");
+        console.log("error actualizando la respuesta");
       });
   };
 
