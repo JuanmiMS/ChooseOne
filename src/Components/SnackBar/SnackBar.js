@@ -103,7 +103,7 @@ class CustomizedSnackbars extends React.Component {
     };
 
     SnackBar = (classes) => {
-        debugger;
+        // debugger;
         let snackBar = "";
         if (this.props.SnackBar == 'success') {
             snackBar = (
