@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import imgDescarga from '../../img/uploadImg.png';
-import SendQueModal from '../SendQuestionModal/SendQuestionModal';
 import {Container, Row, Col, Alert, Modal, Button} from 'react-bootstrap';
 import FormData from 'form-data'
 import axios from 'axios'
@@ -45,7 +44,7 @@ class LoadQuestion extends Component {
         verify = this.state.img1.props.src !== this.state.defaultImgRoute ? verify + 1 : verify;
         verify = this.state.img2.props.src !== this.state.defaultImgRoute ? verify + 1 : verify;
         verify = this.input.current.value !== "" ? verify + 1 : verify;
-        verify = verify == 3 ? true : false;
+        verify = verify === 3 ? true : false;
         return verify;
     }
 
@@ -94,7 +93,6 @@ class LoadQuestion extends Component {
     saveImage = () => {
         const copyState = this.state.imgSToUpload;
         const pathImgsUploadeds = [];
-        const that = this;
         for (var i = 0; i < copyState.length; i++) {
             let data = new FormData();
             data.append('file', copyState[i], copyState[i].name);
@@ -123,7 +121,7 @@ class LoadQuestion extends Component {
     buildQuestionRequest = _ => {
         const that = this;
         if (this.checkQuestion) {
-            if (this.state.imgSToUpload.length == 2) {
+            if (this.state.imgSToUpload.length === 2) {
                 this.setState({
                     loader: <Loader/>
                 });

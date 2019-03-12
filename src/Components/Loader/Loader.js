@@ -1,6 +1,5 @@
 import Loader from 'react-loader-spinner'
 import React, {Component} from 'react';
-import Backdrop from '@material-ui/core/Backdrop';
 
 const style= {
     position: 'fixed',

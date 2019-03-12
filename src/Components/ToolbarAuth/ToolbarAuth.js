@@ -114,7 +114,7 @@ class ToolbarAuth extends Component {
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container">
 
-                    <a className="navbar-brand" href="#aqui">ChooseOne <img height="45" width="45" id="logo" src={logo} /></a>
+                    <a className="navbar-brand" href="#aqui">ChooseOne <img height="45" width="45" alt="logo" id="logo" src={logo} /></a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent"
                             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

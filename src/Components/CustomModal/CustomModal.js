@@ -38,7 +38,7 @@ class CustomModal extends React.Component {
                     <ModalHeader toggle={this.toggle}>Inicio con email / Registro </ModalHeader>
                     <ModalBody>
                         <InputGroup>
-                            <InputGroupAddon addonType="prepend">@</InputGroupAddon>
+                            <InputGroupAddon addonType="prepend"><span role="img" aria-label="candado">@</span></InputGroupAddon>
                             <Input placeholder="username" onBlur={e => {
                                 this.setState({
                                     username: e.target.value
@@ -46,7 +46,7 @@ class CustomModal extends React.Component {
                             }}/>
                         </InputGroup>
                         <InputGroup>
-                            <InputGroupAddon addonType="prepend">🔐</InputGroupAddon>
+                            <InputGroupAddon addonType="prepend"><span role="img" aria-label="candado">🔐</span></InputGroupAddon>
                             <Input placeholder="password" type={'password'} onBlur={e => {
                                 this.setState({
                                     password: e.target.value
@@ -55,7 +55,6 @@ class CustomModal extends React.Component {
                         </InputGroup>
                     </ModalBody>
                     <ModalFooter>
-                        {/*{this.loginButton()}*/}
                         <div className={"btns-container"}>
                             <Button color="success" onClick={this.handleLoginUser}>Iniciar Sesión</Button>
                             {this.props.loginWithGoogle}
