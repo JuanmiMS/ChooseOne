@@ -5,7 +5,8 @@ import {
     NavItem,
 } from 'reactstrap';
 import CustomModal from '../CustomModal/CustomModal.js';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth'
 import axios from 'axios'
 import notUserImg from '../../img/notUserImg.png'
 import logo from '../../img/logo.png'

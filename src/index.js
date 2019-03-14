@@ -5,7 +5,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 
 firebase.initializeApp({
     apiKey: "AIzaSyAofQ-s3wfaf7avPgT4tE1JlqbXMg5q97U",
